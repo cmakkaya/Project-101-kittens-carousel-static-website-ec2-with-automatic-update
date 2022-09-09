@@ -1,16 +1,16 @@
 AWSTemplateFormatVersion: 2010-09-09
 Description: |
-  This template creates an EC2 instance to run static web site with Apache web server
+  This temp launches an ec2 instance with a SG which enables SSH.
   
 Resources:
-  Instance:
+  CFNInstance:
     Type: AWS::EC2::Instance
     Properties:
       ImageId: ami-05fa00d4c63e32376
       InstanceType: t2.micro
       KeyName: cumhurkey
       SecurityGroups:
-        - http-ssh-sec-group
+        - http-ssh-sec-grp
       Tags:
         - Key: Name 
           Value: Web Server of StackName
@@ -27,6 +27,7 @@ Resources:
           git clone https://github.com/cmakkaya/Project-101-kittens-carousel-static-website-ec2-with-automatic-update.git
           cd Project-101-kittens-carousel-static-website-ec2-with-automatic-update/
           cp * ../
+          mv .git ../
           cd ../
           rm -rf Project-101-kittens-carousel-static-website-ec2-with-automatic-update/
           wget https://raw.githubusercontent.com/cmakkaya/01.my-projects_bash_script/main/autogitpull-on-ec2.sh
